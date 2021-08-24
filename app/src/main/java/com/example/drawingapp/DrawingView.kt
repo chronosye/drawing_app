@@ -24,6 +24,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         setUpDrawing()
     }
 
+    /**
+     * This method initializes the attributes of the ViewForDrawing class.
+     */
     private fun setUpDrawing() {
         mPaint = Paint()
         mDrawPath = CustomPath(color, mBrushSize)
@@ -40,6 +43,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         canvas = Canvas(mCanvasBitmap!!)
     }
 
+    /**
+     * This method is called when a stroke is drawn on the canvas as a part of the painting.
+     */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
@@ -57,6 +63,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         }
     }
 
+    /**
+     * This method takes off last stroke from input
+     */
     fun onClickUndo() {
         if (mPaths.size > 0) {
             mUndoPaths.add(mPaths.removeAt(mPaths.size - 1))
@@ -64,6 +73,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         }
     }
 
+    /**
+     * This method acts as an event listener when a touch event is detected on the device.
+     */
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val touchX = event?.x
         val touchY = event?.y
@@ -90,6 +102,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         return true
     }
 
+    /**
+     * This method is called when user wants to change size for brush
+     */
     fun setBrushSize(newSize: Float) {
         mBrushSize = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
@@ -99,11 +114,17 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         mPaint!!.strokeWidth = mBrushSize
     }
 
+    /**
+     * This method is called when user wants to change color for brush
+     */
     fun setColor(newColor: Int) {
         color = newColor
         mPaint!!.color = color
     }
 
+    /**
+     * This method is called when user wants to get color of current brush
+     */
     fun getColor(): Int {
         return mPaint!!.color
     }

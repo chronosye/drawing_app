@@ -111,6 +111,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    /**
+     * Method is used to launch the dialog to select different brush sizes.
+     */
     private fun showBrushSizeDialog() {
 
         bindingDialogBrushSize.ibSmallBrush.setOnClickListener {
@@ -131,6 +134,9 @@ class MainActivity : AppCompatActivity() {
         brushDialog.show()
     }
 
+    /**
+     * Method is used to launch the dialog to select brush color
+     */
     private fun showColorPickerDialog() {
         colorPickerDialog.window?.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -194,6 +200,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Method for requesting permission
+     */
     private fun requestStoragePermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
@@ -228,6 +237,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * We are calling this method to check the permission status
+     */
     private fun isReadStorageAllowed(): Boolean {
         val result =
             ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -235,6 +247,9 @@ class MainActivity : AppCompatActivity() {
         return result == PackageManager.PERMISSION_GRANTED
     }
 
+    /**
+     * Create bitmap from view and returns it
+     */
     private fun getBitmapFromView(view: View): Bitmap {
         val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
@@ -314,6 +329,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        /**
+         * This function is used to show the progress dialog with the title and message to user.
+         */
         private fun showProgressDialog() {
             mProgressDialog = Dialog(this@MainActivity)
             mProgressDialog.setContentView(R.layout.dialog_custom_progress)
@@ -321,6 +339,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        /**
+         * This function is used to dismiss the progress dialog if it is visible to user.
+         */
         private fun cancelDialog() {
             mProgressDialog.dismiss()
         }
@@ -328,6 +349,5 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val STORAGE_PERMISSION_CODE = 1
-        private const val GALLERY = 2
     }
 }
